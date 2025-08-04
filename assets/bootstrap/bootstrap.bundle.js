@@ -5940,9 +5940,7 @@
         if (this.constructor.Default[key] !== this._config[key]) {
           config[key] = this._config[key];
         }
-      } // In the future can be replaced with:
-      // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
-      // `Object.fromEntries(keysWithDifferentValues)`
+      } 
 
 
       return config;
@@ -6002,27 +6000,12 @@
     }
 
   }
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   * add .Tooltip to jQuery only if jQuery is present
-   */
+
 
 
   defineJQueryPlugin(Tooltip);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): popover.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+
 
   const NAME$3 = 'popover';
   const DATA_KEY$3 = 'bs.popover';
@@ -6052,14 +6035,10 @@
   };
   const SELECTOR_TITLE = '.popover-header';
   const SELECTOR_CONTENT = '.popover-body';
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
+
 
   class Popover extends Tooltip {
-    // Getters
+
     static get Default() {
       return Default$2;
     }
@@ -6074,7 +6053,7 @@
 
     static get DefaultType() {
       return DefaultType$2;
-    } // Overrides
+    } 
 
 
     isWithContent() {
@@ -6085,7 +6064,7 @@
       this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE);
 
       this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT);
-    } // Private
+    } 
 
 
     _getContent() {
@@ -6094,7 +6073,7 @@
 
     _getBasicClassPrefix() {
       return CLASS_PREFIX;
-    } // Static
+    } 
 
 
     static jQueryInterface(config) {
@@ -6112,27 +6091,11 @@
     }
 
   }
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   * add .Popover to jQuery only if jQuery is present
-   */
 
 
   defineJQueryPlugin(Popover);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): scrollspy.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+
 
   const NAME$2 = 'scrollspy';
   const DATA_KEY$2 = 'bs.scrollspy';
@@ -6163,11 +6126,7 @@
   const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
   const METHOD_OFFSET = 'offset';
   const METHOD_POSITION = 'position';
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
+
 
   class ScrollSpy extends BaseComponent {
     constructor(element, config) {
@@ -6182,7 +6141,7 @@
       this.refresh();
 
       this._process();
-    } // Getters
+    } 
 
 
     static get Default() {
@@ -6191,7 +6150,7 @@
 
     static get NAME() {
       return NAME$2;
-    } // Public
+    } 
 
 
     refresh() {
@@ -6225,8 +6184,7 @@
     dispose() {
       EventHandler.off(this._scrollElement, EVENT_KEY$2);
       super.dispose();
-    } // Private
-
+    } 
 
     _getConfig(config) {
       config = { ...Default$1,
@@ -6301,8 +6259,7 @@
         SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE$1, link.closest(SELECTOR_DROPDOWN$1)).classList.add(CLASS_NAME_ACTIVE$1);
       } else {
         SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP$1).forEach(listGroup => {
-          // Set triggered links parents as active
-          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+
           SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).forEach(item => item.classList.add(CLASS_NAME_ACTIVE$1)); // Handle special case when .nav-link is inside .nav-item
 
           SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach(navItem => {
@@ -6318,7 +6275,7 @@
 
     _clear() {
       SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target).filter(node => node.classList.contains(CLASS_NAME_ACTIVE$1)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE$1));
-    } // Static
+    } 
 
 
     static jQueryInterface(config) {
@@ -6338,36 +6295,13 @@
     }
 
   }
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
 
   EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
     SelectorEngine.find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
   });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   * add .ScrollSpy to jQuery only if jQuery is present
-   */
+
 
   defineJQueryPlugin(ScrollSpy);
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): tab.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
 
   const NAME$1 = 'tab';
   const DATA_KEY$1 = 'bs.tab';
@@ -6389,18 +6323,11 @@
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]';
   const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
   const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
 
   class Tab extends BaseComponent {
-    // Getters
     static get NAME() {
       return NAME$1;
-    } // Public
-
+    } 
 
     show() {
       if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
@@ -6445,8 +6372,7 @@
       } else {
         complete();
       }
-    } // Private
-
+    } 
 
     _activate(element, container, callback) {
       const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
@@ -6509,7 +6435,7 @@
       if (callback) {
         callback();
       }
-    } // Static
+    } 
 
 
     static jQueryInterface(config) {
@@ -6527,11 +6453,7 @@
     }
 
   }
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
+
 
 
   EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
@@ -6546,26 +6468,11 @@
     const data = Tab.getOrCreateInstance(this);
     data.show();
   });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   * add .Tab to jQuery only if jQuery is present
-   */
+
 
   defineJQueryPlugin(Tab);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): toast.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+
 
   const NAME = 'toast';
   const DATA_KEY = 'bs.toast';
@@ -6593,11 +6500,7 @@
     autohide: true,
     delay: 5000
   };
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
+
 
   class Toast extends BaseComponent {
     constructor(element, config) {
@@ -6774,23 +6677,10 @@
     }
 
   }
-
   enableDismissTrigger(Toast);
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   * add .Toast to jQuery only if jQuery is present
-   */
 
   defineJQueryPlugin(Toast);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): index.umd.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
   const index_umd = {
     Alert,
     Button,
